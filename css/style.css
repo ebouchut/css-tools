@@ -1,15 +1,22 @@
-/* ClearFix */
 
-.group:before,
-.group:after {
-    content: "";
-    display: table;
-}
+/** -----------------------------
+ *  Dan Cederholm's "clearfix"
+ */
 
 .group:after {
-    clear: both;
+    content:    ".";
+    display:    block;
+    height:     0;
+    clear:      both;
+    visibility: hidden;
 }
 
-.group {
-    zoom: 1; /* workaround for IE6, IE7 */
+/* For IE6 */
+* html .group {
+    height: 1%;
+}
+
+/* For IE7 */
+*:first-child+html .group {
+    min-height: 1px;
 }
