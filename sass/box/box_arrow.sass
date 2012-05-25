@@ -1,0 +1,62 @@
+@mixin arrow($orientation: "top", $size: 10px, $bgColor: #fff, $borderWidth: 4px, $borderColor: #ccc) 
+{
+    position:   relative;
+    background: $bgColor;
+    border:     $borderWidth solid $borderColor; 
+
+    &:after, &:before {
+        @if $orientation == "top" {
+            bottom: 100%;
+        } @elseif $orientation == "bottom" {
+            top:    100%;
+        } @elseif $orientation == "left" {
+            right:  100%;
+        } @elseif $orientation == "right" {
+            left:   100%;
+        }  
+        border:         solid transparent;
+        content:        " ";
+        height:         0;
+        width:          0;
+        position:       absolute;
+        pointer-events: none;
+    }    
+    &:after {
+        @if $orientation == "top" {
+            left:                50%;
+            border-bottom-color: $bgColor;
+        } @elseif $orientation == "bottom" {
+            left:             50%;
+            border-top-color: $bgColor;
+        } @else if $orientation == "left" {
+            top:                50%;
+            border-right-color: $bgColor;            
+        } @elseif $orientation == "right" {
+            top:               50%;
+            border-left-color: $bgColor;            
+        }        
+        border-width:     $size;
+        margin-left:     -$size;
+    }
+    &:before { 
+        $marginSize: $size + round($borderWidth * 1.41421356);  // cos(PI/4) * 2
+        @if $orientation == "top" {
+            left:                50%;
+            border-bottom-color: $borderColor;
+            margin-left:         -$marginSize;
+        } @elseif $orientation == "bottom" {
+            left:             50%;
+            border-top-color: $borderColor;
+            margin-left:      -$marginSize;
+        } @else if $orientation == "left" {
+            top:                50%;
+            border-right-color: $borderColor;
+            margin-top:         -$marginSize;                        
+        } @elseif $orientation == "right" {
+            top:               50%;
+            border-left-color: $borderColor;            
+            margin-top:        -$marginSize;                        
+        }        
+        border-width: $marginSize;
+    }    
+}
