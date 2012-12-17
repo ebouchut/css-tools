@@ -1,0 +1,44 @@
+/* https://developer.mozilla.org/en/CSS/transition */
+
+h1.test {
+    padding: 300px;
+
+    -webkit-transition:  all 4s ease-out;
+       -moz-transition:  all 4s ease-out;
+          -o-transition: all 4s ease-out;
+             transition: all 4s ease-out;
+}
+
+h1.test:hover {
+    -webkit-transform: translate(200px, 200px) rotate(360deg);
+       -moz-transform: translate(200px, 200px) rotate(360deg);
+         -o-transform: translate(200px, 200px) rotate(360deg);
+            transform: translate(200px, 200px) rotate(360deg);
+}
+
+a.test {
+    color: white;
+    background: #9C3;
+    padding: 10px 20px;
+
+    /*
+    -webkit-transition-property:        background;
+    -webkit-transition-duration:        1.2s;
+    -webkit-transition-timing-function: ease;
+    */
+   -webkit-transition: background 2s ease, color 2s linear;
+      -moz-transition: background 2s ease, color 2s linear;
+        -o-transition: background 2s ease, color 2s linear;
+           transition: background 2s ease, color 2s linear;
+}
+
+a.test:hover {
+    background: #690;
+    color: black;
+
+    -webkit-transform: translate(200px, 200px) rotate(20deg);
+       -moz-transform: translate(200px, 200px) rotate(720deg);
+         -o-transform: translate(200px, 200px) rotate(720deg);
+            transform: translate(200px, 200px) rotate(720deg);
+
+}
